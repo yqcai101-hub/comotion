@@ -2,11 +2,15 @@
 
 > Flow-Driven Dual-Path Diffusion Models for Consistent Human Motion Transfer
 
-## 📄 Paper Website
+## 📄 Live Demo
 
-This repository contains the official paper website for **CoMotion**. Visit the live demo at: [CoMotion Project Page](https://[your-username].github.io/comotion/)
+**👉 访问我们的论文网站： https://yqcai101-hub.github.io/comotion/**
 
-## 🚀 Quick Start
+或者通过 GitHub Pages 访问：https://yqcai101-hub.github.io/comotion/
+
+---
+
+## 🚀 Quick Start (Local)
 
 To run the website locally:
 
@@ -17,6 +21,21 @@ python -m http.server 8000
 
 Then open `http://localhost:8000` in your browser.
 
+---
+
+## 🛠️ Deployment (GitHub Pages)
+
+如果这是您第一次部署 GitHub Pages：
+
+1. 进入仓库 **Settings** → **Pages**
+2. 在 **Source** 下选择：
+   - Branch: `main`
+   - Folder: `/ (root)`
+3. 点击 **Save**
+4. 等待 1-2 分钟，网站将发布到 `https://yqcai101-hub.github.io/comotion/`
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -26,27 +45,24 @@ comotion/
 └── fig/
     ├── 图2.png         # Framework figure
     └── video/
-        └── MyVideo_3.mp4  # Demo video
+        ├── MyVideo_3.mp4
+        ├── MyVideo_4.mp4
+        └── extracted_video0-5.mp4
 ```
 
-## 🛠️ Deployment to GitHub Pages
-
-1. Go to your GitHub repository settings
-2. Scroll down to **GitHub Pages** section
-3. Under **Source**, select `main` branch and `/ (root)` folder
-4. Click **Save**
-5. Your website will be available at `https://[your-username].github.io/comotion/`
+---
 
 ## 📝 Citation
 
 ```bibtex
 @article{wang2025comotion,
   title={CoMotion: Flow-Driven Dual-Path Diffusion Models for Consistent Human Motion Transfer},
-  author={Wang, Xiangyang and Cai, Yuqing and Wang, Rui and Cheng, Erkang},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  author={Wang Xiangyang and Cai Yuqing and Wang Rui and Cheng Erkang},
   year={2025}
 }
 ```
+
+---
 
 ## 📧 Contact
 
