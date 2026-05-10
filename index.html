@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoMotion: Flow-Driven Dual-Path Diffusion Models</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .title .highlight {
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .venue {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .authors {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .authors a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .authors a:hover {
+            text-decoration: underline;
+        }
+
+        .affiliation {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .notes {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .links {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
+        }
+
+        .btn .icon {
+            margin-right: 8px;
+        }
+
+        .abstract-section {
+            background-color: #f8f9fa;
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 4px solid #3498db;
+        }
+
+        .abstract-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .abstract-text {
+            font-size: 1.05em;
+            color: #444;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .method-section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .figure-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .figure-container img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .figure-caption {
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #666;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .video-section {
+            margin-bottom: 40px;
+        }
+
+        .video-container {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-caption {
+            padding: 15px;
+            color: #aaa;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .citation-section {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .citation-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .citation-code {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .contact-list {
+            list-style: none;
+            font-size: 0.95em;
+        }
+
+        .contact-list li {
+            display: inline-block;
+            margin: 0 15px;
+            color: #555;
+        }
+
+        .contact-list a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .title {
+                font-size: 1.6em;
+            }
+
+            .authors {
+                font-size: 0.95em;
+            }
+
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: fit-content;
+            }
+
+            .abstract-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1 class="title">
+            <span class="highlight">Co</span>Motion: Flow-Driven Dual-Path Diffusion Models for Consistent Human Motion Transfer
+        </h1>
+        <div class="venue">arXiv 2025</div>
+        
+        <div class="authors">
+            <a href="mailto:wangxiangyang@shu.edu.cn">Xiangyang Wang</a><sup>1</sup>,
+            <a href="mailto:3235721579@shu.edu.cn">Yuqing Cai</a><sup>1</sup>,
+            <a href="mailto:rwang@shu.edu.cn">Rui Wang</a><sup>*1</sup>,
+            <a href="mailto:chengerkang@nullmax.ai">Erkang Cheng</a><sup>2</sup>
+        </div>
+        
+        <div class="affiliation">
+            <sup>1</sup> School of Communication and Information Engineering, Shanghai University<br>
+            <sup>2</sup> Nullmax (Shanghai) Co., Ltd., Shanghai, China
+        </div>
+        
+        <div class="notes">
+            <sup>*</sup>Corresponding Author
+        </div>
+
+        <div class="links">
+            <a href="[Paper URL]" class="btn">
+                <span class="icon">📄</span> Paper
+            </a>
+            <!-- <a href="[Code URL]" class="btn">
+                <span class="icon">💻</span> Code
+            </a> -->
+            <a href="[Video URL]" class="btn">
+                <span class="icon">▶️</span> Video
+            </a>
+        </div>
+    </div>
+
+    <div class="abstract-section">
+        <div class="abstract-title">Abstract</div>
+        <div class="abstract-text">
+            Despite impressive advancements in human motion transfer based on diffusion models, existing methods still 
+            struggle to generate temporally consistent and realistic human motion, often exhibiting motion discontinuities, 
+            appearance (or identity)-motion conflicts, and visual artifacts such as phantom limbs. These issues largely 
+            stem from inaccurate 2D pose or 3D SMPL mesh estimation and the lack of explicit motion modeling to capture 
+            coherent temporal dependencies across frames. To address these challenges, we introduce CoMotion, flow-driven 
+            dual-path diffusion models designed for Consistent human Motion transfer. Specifically, it consists of three units: 
+            (1) Dual-Path Motion Coordination integrates global motion priors from an auxiliary temporal branch into the main path. 
+            The main path captures fine-grained local motion via interleaved video-flow embeddings, while the auxiliary path 
+            encodes long-range temporal dependencies through external temporal blocks, ensuring globally coherent motion. 
+            (2) Structure-Aware Flow mechanism embeds 3D structural priors into 2D optical flow, guided by surface normal 
+            and Euler continuity constraints, enabling geometrically consistent and perceptually stable motion synthesis 
+            with respect to underlying 3D geometry. (3) Dual single-layer ViT module mitigates motion-appearance discrepancies. 
+            Extensive experiments demonstrate that CoMotion significantly improves the continuity of local body motion and 
+            global human motion as well as the generation quality, achieving competitive performance on benchmark datasets.
+        </div>
+    </div>
+
+    <div class="method-section">
+        <div class="section-title">Method Overview</div>
+        <div class="figure-container">
+            <img src="fig/图2.png" alt="CoMotion Framework">
+            <div class="figure-caption">
+                Given reference image and driving video, our method extracts both the Structure-Aware Flow and the Skeleton Flow as motion. Structure-Aware Flow sequences O<sup>RGB</sup> ∈ ℝ<sup>H × W × 3</sup> are interleaved with the corresponding video frames I ∈ ℝ<sup>H × W × 3</sup> to form pseudo-continuous sequence which denoted as X = [I<sub>1</sub>, O<sup>RGB</sup><sub>1</sub>, I<sub>2</sub>, O<sup>RGB</sup><sub>2</sub>, ..., I<sub>n</sub>, O<sup>RGB</sup><sub>n</sub>] in the main path. After encoding, dual single-layer ViT module aligns and fuses motion and appearance features. The preprocessed skeleton flow sequence (2N+n) is encoded and injected into the auxiliary path (N is the half-length of adaptive window). It integrates the global motion priors to guide local human motion generation within the model. Flow-confidence mechanism leverages optical flow intensity to derive confidence scores, enabling adaptive modulation of motion guidance across different body regions.
+            </div>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <div class="section-title">Video Demo</div>
+        
+        <div class="video-container">
+            <video controls>
+                <source src="fig/video/MyVideo_3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">Demo 1: CoMotion Motion Transfer</div>
+        </div>
+
+        <div class="video-container">
+            <video controls>
+                <source src="fig/video/MyVideo_4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">Demo 2: Structure-Aware Flow</div>
+        </div>
+
+        <div class="video-container">
+            <video controls>
+                <source src="fig/video/extracted_video0-5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">Demo 3: Comparison Results</div>
+        </div>
+    </div>
+
+    <div class="citation-section">
+        <div class="citation-title">Citation</div>
+        <div class="citation-code">
+@article{wang2025comotion,<br>
+  &nbsp;&nbsp;title={CoMotion: Flow-Driven Dual-Path Diffusion Models for Consistent Human Motion Transfer},<br>
+  &nbsp;&nbsp;author={Wang Xiangyang and Cai Yuqing and Wang Rui and Cheng Erkang},<br>
+  &nbsp;&nbsp;year={2025}<br>
+}
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <div class="contact-title">Contact</div>
+        <ul class="contact-list">
+            <li>✉️ <a href="mailto:rwang@shu.edu.cn">Rui Wang (Corresponding)</a></li>
+            <li>📧 <a href="mailto:wangxiangyang@shu.edu.cn">Xiangyang Wang</a></li>
+            <li>📧 <a href="mailto:3235721579@shu.edu.cn">Yuqing Cai</a></li>
+        </ul>
+    </div>
+</body>
+</html>
