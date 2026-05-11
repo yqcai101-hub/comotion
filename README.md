@@ -29,6 +29,8 @@ Despite impressive advancements in human motion transfer based on diffusion mode
 ### Method Overview
 Given reference image and driving video, our method extracts both the Structure-Aware Flow and the Skeleton Flow as motion. Structure-Aware Flow sequences O^RGB ∈ ℝ^H × W × 3 are interleaved with the corresponding video frames I ∈ ℝ^H × W × 3 to form pseudo-continuous sequence which denoted as X = [I_1, O^RGB_1, I_2, O^RGB_2, ..., I_n, O^RGB_n] in the main path. After encoding, dual single-layer ViT module aligns and fuses motion and appearance features. The preprocessed skeleton flow sequence (2N+n) is encoded and injected into the auxiliary path (N is the half-length of adaptive window). It integrates the global motion priors to guide local human motion generation within the model. Flow-confidence mechanism leverages optical flow intensity to derive confidence scores, enabling adaptive modulation of motion guidance across different body regions.
 
+![CoMotion Framework](fig/framework.png)
+
 ---
 
 ## 📝 Citation
