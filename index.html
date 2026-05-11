@@ -50,13 +50,14 @@
 
         .authors {
             font-size: 1.1em;
+            color: #444;
             margin-bottom: 15px;
         }
 
         .authors a {
             color: #3498db;
             text-decoration: none;
-            font-weight: 500;
+            margin: 0 8px;
         }
 
         .authors a:hover {
@@ -107,7 +108,6 @@
             padding: 35px;
             border-radius: 15px;
             margin-bottom: 40px;
-            border-left: 4px solid #3498db;
         }
 
         .abstract-title {
@@ -167,8 +167,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 800px;
-            margin: 20px auto;
+            margin-bottom: 25px;
         }
 
         .video-container video {
@@ -177,23 +176,20 @@
         }
 
         .video-caption {
-            padding: 15px;
+            padding: 15px 20px;
             color: #aaa;
-            font-size: 0.9em;
+            font-size: 0.95em;
             text-align: center;
         }
 
         .citation-section {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
             margin-bottom: 40px;
         }
 
         .citation-title {
-            font-size: 1.2em;
+            font-size: 1.3em;
             font-weight: 600;
+            color: #2c3e50;
             margin-bottom: 15px;
         }
 
@@ -335,7 +331,7 @@
                 <source src="fig/video/fixed_extracted.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <div class="video-caption">Demo 1: Comparison Results</div>
+            <div class="video-caption">Demo 1: CoMotion Motion Transfer</div>
         </div>
 
         <div class="video-container">
@@ -351,17 +347,17 @@
                 <source src="fig/video/MyVideo_4.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <div class="video-caption">Demo 3: Structure-Aware Flow</div>
+            <div class="video-caption">Demo 3: CoMotion Motion Transfer</div>
         </div>
     </div>
 
     <div class="citation-section">
         <div class="citation-title">Citation</div>
         <div class="citation-code">
-@article{wang2025comotion,<br>
-  &nbsp;&nbsp;title={CoMotion: Flow-Driven Dual-Path Diffusion Models for Consistent Human Motion Transfer},<br>
-  &nbsp;&nbsp;author={Wang Xiangyang and Cai Yuqing and Wang Rui and Cheng Erkang},<br>
-  &nbsp;&nbsp;year={2025}<br>
+@article{wang2025comotion,
+  title={CoMotion: Flow-Driven Dual-Path Diffusion Models for Consistent Human Motion Transfer},
+  author={Wang Xiangyang and Cai Yuqing and Wang Rui and Cheng Erkang},
+  year={2025}
 }
         </div>
     </div>
@@ -369,9 +365,8 @@
     <div class="contact-section">
         <div class="contact-title">Contact</div>
         <ul class="contact-list">
-            <li>✉️ <a href="mailto:rwang@shu.edu.cn">Rui Wang (Corresponding)</a></li>
-            <li>📧 <a href="mailto:wangxiangyang@shu.edu.cn">Xiangyang Wang</a></li>
-            <li>📧 <a href="mailto:3235721579@shu.edu.cn">Yuqing Cai</a></li>
+            <li>Corresponding Author: <a href="mailto:rwang@shu.edu.cn">Rui Wang</a></li>
+            <li>Authors: <a href="mailto:wangxiangyang@shu.edu.cn">Xiangyang Wang</a>, <a href="mailto:3235721579@shu.edu.cn">Yuqing Cai</a>, <a href="mailto:chengerkang@nullmax.ai">Erkang Cheng</a></li>
         </ul>
     </div>
 </body>
