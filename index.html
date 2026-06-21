@@ -205,10 +205,13 @@
         }
 
         .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
             margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .overview-card {
@@ -490,20 +493,35 @@
             <div class="section-title">Overview</div>
             <div class="overview-grid">
                 <div class="overview-card">
-                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=reference%20image%20of%20a%20person%20portrait%20for%20motion%20transfer%20research&image_size=portrait_4_3" alt="Reference Image">
-                    <div class="label">Reference Image</div>
+                    <div class="video-wrapper">
+                        <video controls>
+                            <source src="fig/video/fixed_extracted.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="label">动作迁移</div>
                 </div>
                 <div class="overview-card">
-                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=driving%20video%20frame%20showing%20human%20motion%20for%20motion%20transfer&image_size=portrait_4_3" alt="Driving Video">
-                    <div class="label">Driving Video</div>
+                    <div class="video-wrapper">
+                        <video controls>
+                            <source src="fig/video/MyVideo_3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="label">姿态转换</div>
                 </div>
                 <div class="overview-card">
-                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=output%20video%20frame%20of%20motion%20transfer%20result%20showing%20consistent%20motion&image_size=portrait_4_3" alt="Our Result">
-                    <div class="label">CoMotion Output</div>
+                    <div class="video-wrapper">
+                        <video controls>
+                            <source src="fig/video/MyVideo_4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="label">表情复现</div>
                 </div>
             </div>
             <div class="overview-description">
-                Given a reference image and driving video, CoMotion faithfully transfers the motion from the driving video to the reference person while preserving identity and ensuring temporal consistency.
+                给定参考图像和驱动视频，CoMotion 能够将驱动视频中的动作迁移到参考人物上，同时保持身份特征并确保时间一致性。
             </div>
         </div>
 
@@ -517,7 +535,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">📌 Demo 1: CoMotion Motion Transfer</div>
+                    <div class="video-caption">动作迁移</div>
                 </div>
 
                 <div class="video-card">
@@ -567,7 +585,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">🔄 转身再转回来</div>
+                    <div class="video-caption">转身</div>
                 </div>
 
                 <div class="video-card">
@@ -577,7 +595,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">😊 半身微笑打招呼</div>
+                    <div class="video-caption">微笑</div>
                 </div>
 
                 <div class="video-card">
@@ -587,7 +605,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">💃 扭动</div>
+                    <div class="video-caption">扭动</div>
                 </div>
 
                 <div class="video-card">
@@ -597,7 +615,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">🏮 水里古典舞</div>
+                    <div class="video-caption">古典舞</div>
                 </div>
 
                 <div class="video-card">
@@ -607,7 +625,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">🌾 抚摸麦尖儿转身</div>
+                    <div class="video-caption">抚摸</div>
                 </div>
 
                 <div class="video-card">
@@ -617,7 +635,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">🎶 舞蹈 Demo 1</div>
+                    <div class="video-caption">舞蹈一</div>
                 </div>
 
                 <div class="video-card">
@@ -627,7 +645,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">🎶 舞蹈 Demo 2</div>
+                    <div class="video-caption">舞蹈二</div>
                 </div>
 
                 <div class="video-card">
@@ -637,7 +655,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">👤 背影双手放下</div>
+                    <div class="video-caption">背影</div>
                 </div>
 
                 <div class="video-card">
@@ -647,7 +665,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">📹 UBC Demo 1</div>
+                    <div class="video-caption">UBC一</div>
                 </div>
 
                 <div class="video-card">
@@ -657,7 +675,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">📹 UBC Demo 6</div>
+                    <div class="video-caption">UBC二</div>
                 </div>
 
                 <div class="video-card">
@@ -667,7 +685,7 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div class="video-caption">📊 Additional Result</div>
+                    <div class="video-caption">附加结果</div>
                 </div>
             </div>
         </div>
