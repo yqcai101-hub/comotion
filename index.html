@@ -522,6 +522,16 @@
             </div>
         </div>
 
+        <div class="section pipeline-section">
+            <div class="section-title">Method Overview</div>
+            <div class="figure-container">
+                <img src="fig/framework.png" alt="CoMotion Framework">
+                <div class="figure-caption">
+                    Given reference image and driving video, our method extracts both the Structure-Aware Flow and the Skeleton Flow as motion. Structure-Aware Flow sequences O<sup>RGB</sup> ∈ ℝ<sup>H × W × 3</sup> are interleaved with the corresponding video frames I ∈ ℝ<sup>H × W × 3</sup> to form pseudo-continuous sequence which denoted as X = [I<sub>1</sub>, O<sup>RGB</sup><sub>1</sub>, I<sub>2</sub>, O<sup>RGB</sup><sub>2</sub>, ..., I<sub>n</sub>, O<sup>RGB</sup><sub>n</sub>] in the main path. After encoding, dual single-layer ViT module aligns and fuses motion and appearance features. The preprocessed skeleton flow sequence (2N+n) is encoded and injected into the auxiliary path (N is the half-length of adaptive window). It integrates the global motion priors to guide local human motion generation within the model. Flow-confidence mechanism leverages optical flow intensity to derive confidence scores, enabling adaptive modulation of motion guidance across different body regions.
+                </div>
+            </div>
+        </div>
+
         <div id="video-section" class="section video-section">
             <div class="section-title">Video Demo</div>
             <div class="video-grid">
@@ -653,16 +663,6 @@
                         </video>
                     </div>
                     <div class="video-caption">附加结果</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section pipeline-section">
-            <div class="section-title">Method Overview</div>
-            <div class="figure-container">
-                <img src="fig/framework.png" alt="CoMotion Framework">
-                <div class="figure-caption">
-                    Given reference image and driving video, our method extracts both the Structure-Aware Flow and the Skeleton Flow as motion. Structure-Aware Flow sequences O<sup>RGB</sup> ∈ ℝ<sup>H × W × 3</sup> are interleaved with the corresponding video frames I ∈ ℝ<sup>H × W × 3</sup> to form pseudo-continuous sequence which denoted as X = [I<sub>1</sub>, O<sup>RGB</sup><sub>1</sub>, I<sub>2</sub>, O<sup>RGB</sup><sub>2</sub>, ..., I<sub>n</sub>, O<sup>RGB</sup><sub>n</sub>] in the main path. After encoding, dual single-layer ViT module aligns and fuses motion and appearance features. The preprocessed skeleton flow sequence (2N+n) is encoded and injected into the auxiliary path (N is the half-length of adaptive window). It integrates the global motion priors to guide local human motion generation within the model. Flow-confidence mechanism leverages optical flow intensity to derive confidence scores, enabling adaptive modulation of motion guidance across different body regions.
                 </div>
             </div>
         </div>
